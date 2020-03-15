@@ -394,7 +394,7 @@ def verificarTiros(matriz,x,y):
         if matriz[x][y+1]=='O':
             seguir=False
             proximosDisparos.append([y+1,x])
-
+    
     return seguir,proximosDisparos
 
 
@@ -404,7 +404,7 @@ tabla=[
         ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'], 
         ['O', 'O', 'O', 'O', 'F', 'O', 'O', 'O', 'O', 'O'], 
         ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'], 
-        ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'], 
+        ['O', 'O', 'O', 'O', 'O', 'F', 'O', 'O', 'O', 'O'], 
         ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'], 
         ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'], 
         ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'], 
@@ -414,15 +414,13 @@ tabla=[
 def dispararComputadora (matriz,arregloDeDisparos):
     oriana = False
     acertado = False
-    try:
-        for posLista,lista in enumerate (matriz):
+    for posLista,lista in enumerate (matriz):
             oriana = False #Oriana es una falsa gabo
             for posElemento,elemento in enumerate (lista):
                 if elemento=='F':
                     resultados=verificarTiros(matriz,posLista,posElemento)
-                    print(resultados[1])
                     print(resultados[0])
-                    if not resultados[0]:
+                    if resultados[0]==False :
                         disparo=random.choice(resultados[1])
                         y=disparo[1]
                         x=disparo[0]
@@ -434,15 +432,12 @@ def dispararComputadora (matriz,arregloDeDisparos):
                         oriana = True
                         arregloDeDisparos.append([y,x])
                         break
-            if (oriana):
-                break
+                if (oriana):
+                    break
 
                     
                         
-        print(resultados[1])
-            
-    
-    except UnboundLocalError:
+    if resultados[0]==True:
             valido=False
             while valido==False:
                 x=random.randint(0,9)
@@ -460,14 +455,15 @@ def dispararComputadora (matriz,arregloDeDisparos):
 
  
     return matriz,arregloDeDisparos,acertado
-
-
-
-imprimirTablero(tabla)
+hola=1
 arreglo=[]
-tiroComputadora=dispararComputadora(tabla,arreglo)
-tabla=tiroComputadora[0]
-imprimirTablero(tabla)
+while hola==1:
+    imprimirTablero(tabla)
+
+    tiroComputadora=dispararComputadora(tabla,arreglo)
+    tabla=tiroComputadora[0]
+    imprimirTablero(tabla)
+    hola=int(input(' hola'))
 
 
 
