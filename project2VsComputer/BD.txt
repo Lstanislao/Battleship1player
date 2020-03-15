@@ -1,0 +1,7 @@
+luis,stanislao,19,m,88,10,1
+oriana,alejos,28,f,90,12,1
+valeria,stanislao,14,f,82,13,1
+ksotillo,kevin,21,m,88,11,1
+ori,gonzales,18,f,80,14,1
+thestannis,sta,19,m,0,0,0
+gabo,el profe,99,m,82,14,1
